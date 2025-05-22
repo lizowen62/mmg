@@ -8,8 +8,8 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import HomeView from '../pages/index.vue'
-import ShopView from '../pages/Shop.vue'
-import ResultView from '../pages/Result.vue'
+import ShopView from '../pages/shop.vue'
+import ResultView from '../pages/result.vue'
 import post from '../pages/Details/post.vue'
 import NewsView from '../pages/news.vue'
 

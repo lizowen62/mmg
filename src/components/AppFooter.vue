@@ -7,7 +7,8 @@
     <a
       v-for="item in items"
       :key="item.title"
-      class="d-inline-block mx-2 social-link flex flex-row"
+      style="display: flex; flex-direction: row; align-items: center; justify-content: center; text-decoration: none;"
+      class="mx-2 social-link"
       :href="item.href"
       rel="noopener noreferrer"
       target="_blank"
@@ -15,10 +16,11 @@
     >
       <v-icon
         :icon="item.icon"
+        style="margin-right: 0.5em;"
         color="white"
         :size="item.icon === '$vuetify' ? 24 : 16"
       />
-      <p>{{ item.subtitle }}</p>
+      <p style="color: white; text-decoration: none;">{{ item.subtitle }}</p>
     </a>
 
     <div
@@ -56,7 +58,7 @@
     {
       title: 'X',
       subtitle: 'Twitter',
-      icon: `mdi-x-twitter`,
+      icon: `mdi-twitter`,
       href: 'https://x.com/vuetifyjs',
     },
   ]
