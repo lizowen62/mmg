@@ -9,6 +9,7 @@
     "
   >
     <div
+      v-if="false"
       style="
         width: 25%;
         display: flex;

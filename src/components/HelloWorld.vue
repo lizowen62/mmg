@@ -2,6 +2,14 @@
 
 <template>
   <v-container fluid>
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%;">
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 70%; flex-wrap: wrap; background-color: orange">
+      <div v-for="category in categories" :key="category" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 1em;">
+        <v-icon icon="mdi-information"></v-icon>
+        <p>{{ category.title }}</p>
+      </div>
+    </div>
+    </div>
     <div
       style="
         display: flex;
@@ -20,6 +28,8 @@
           <div
             style="
               display: flex;
+              flex-wrap: wrap;
+              row-gap: 2em; 
               flex-direction: column;
               align-items: center;
               justify-content: center;
@@ -37,7 +47,6 @@
                     <v-img :src="logoMMG" alt="Image locale" height="100%" contain />
                   </div>
                     <v-card-text
-                      v-if="!isSmallScreen"
                       style="
                         padding: 1em 0em 1em 1em;
                         max-width: 30%;
@@ -204,6 +213,12 @@ const isCampaign = inject('isCampaign');
 const articles = ref<Event[]>([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
+
+const categories = [
+  {title: "Actualités", color: "orange"},
+  {title: "Téléthon", color: "orange"},
+  {title: "Tombola", color: "orange"},
+];
 
 const highlightedDates = ref(['2025-05-01', '2025-05-15', '2025-05-20']);
 

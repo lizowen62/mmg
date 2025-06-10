@@ -1,33 +1,42 @@
 <template>
   <v-app>
     <v-parallax style="background-image: linear-gradient(to bottom, #1a1a1a, #000000)">
-      <!-- penser a recup event telethon si matche afficher nouv bouton -->
 
-      <!-- <v-app-bar scroll-behavior="hide" class="bg-transparent">
-    <div>
-      <router-link to="/ma-route">
-        <v-btn variant="outlined">
-        Button
-        </v-btn>
-      </router-link>
-      <router-link to="/ma-route">
-        <v-btn variant="outlined">
-        Button
-        </v-btn>
-      </router-link>
-    </div>
-    </v-app-bar> -->
 
-      <div class="mt-9 mr-12" style="position: absolute; right: 0; z-index: 2">
-        <v-row>
-          <v-col>
-            <v-btn text to="/" variant="outlined" class="mx-2"> Accueil </v-btn>
-            <v-btn text to="/news" variant="outlined" class="mx-2"> Actualités </v-btn>
-            <v-btn text to="/shop" variant="outlined" class="mx-2"> Boutique </v-btn>
-            <v-btn text to="/result" variant="outlined" class="mx-2"> Résultat de tombola </v-btn>
-          </v-col>
-        </v-row>
-      </div>
+      <v-app-bar v-if="$vuetify.display.smAndUp" app>
+    <v-spacer />
+    <v-btn text to="/" variant="outlined" class="mx-2">Accueil</v-btn>
+    <v-btn text to="/news" variant="outlined" class="mx-2">Actualités</v-btn>
+    <v-btn text to="/shop" variant="outlined" class="mx-2">Boutique</v-btn>
+    <v-btn text to="/result" variant="outlined" class="mx-2">Résultat de tombola</v-btn>
+    <v-btn text to="/galery" variant="outlined" class="mx-2">Galerie</v-btn>
+  </v-app-bar>
+
+  <!-- App-bar mobile (xsOnly) -->
+  <v-app-bar v-else app>
+    <v-toolbar-title>Mon App</v-toolbar-title>
+    <v-spacer />
+    <v-btn icon @click="drawer = !drawer">
+      <v-icon>mdi-menu</v-icon>
+    </v-btn>
+  </v-app-bar>
+
+  <!-- Drawer mobile -->
+  <v-navigation-drawer
+    v-model="drawer"
+    temporary
+    location="left"
+  >
+    <v-list>
+      <v-list-item to="/" title="Accueil" />
+      <v-list-item to="/news" title="Actualités" />
+      <v-list-item to="/shop" title="Boutique" />
+      <v-list-item to="/result" title="Résultat de tombola" />
+      <v-list-item to="/galery" title="Galerie" />
+    </v-list>
+  </v-navigation-drawer>
+
+
 
       <v-carousel
         height="500"
