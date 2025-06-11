@@ -22,7 +22,7 @@
         color="white"
         :size="item.icon === '$vuetify' ? 24 : 16"
       />
-      <p v-if="$vuetify.display.smAndUp" style="color: white; text-decoration: none">{{ item.subtitle }}</p>
+      <p v-if="$vuetify.display.mdAndUp" style="color: white; text-decoration: none">{{ item.subtitle }}</p>
     </a>
 
     <div class="text-caption text-disabled" style="position: absolute; right: 16px">

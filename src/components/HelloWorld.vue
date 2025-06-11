@@ -2,22 +2,15 @@
 
 <template>
   <v-container fluid>
-    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%;">
-    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around; width: 70%; flex-wrap: wrap; background-color: orange">
-      <div v-for="category in categories" :key="category" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 1em;">
-        <v-icon icon="mdi-information"></v-icon>
-        <p>{{ category.title }}</p>
-      </div>
-    </div>
-    </div>
     <div
+      :style="{ padding: $vuetify.display.smAndUp ? '2em 0em 2em 0em' : '0em 0em 2em 0em' , flexWrap: $vuetify.display.smAndUp ? 'nowrap' : 'wrap' }"
       style="
         display: flex;
         flex-direction: row;
         align-items: center;
+        row-gap: 2em;
         justify-content: space-around;
         width: 100%;
-        padding: 2em 0em 2em 0em;
         height: 100%;
       "
     >
@@ -43,14 +36,12 @@
                     color="orange"
                     width="100%"
                   >
-                  <div v-if="!isSmallScreen" style="width: 20%; margin: 2em;">
+                  <div v-if="$vuetify.display.smAndUp" style="width: 20%; margin: 2em;">
                     <v-img :src="logoMMG" alt="Image locale" height="100%" contain />
                   </div>
                     <v-card-text
+                    :style="{ maxWidth: $vuetify.display.smAndUp ? '30%' : '90%', margin: $vuetify.display.smAndUp ? '1em' : '0em', padding: $vuetify.display.smAndUp ? '1em 1em 1em 1em' : '2em' }"
                       style="
-                        padding: 1em 0em 1em 1em;
-                        max-width: 30%;
-                        margin-left: 1em;
                         display: flex;
                         flex-direction: column;
                       "
@@ -72,7 +63,7 @@
                         incididunt ut labore et dolore magna aliqua.
                       </p>
                     </v-card-text>
-                    <v-card-text style="padding: 5.5em 0em 5.5em 0em; max-width: 60%">
+                    <v-card-text v-if="$vuetify.display.smAndUp" style="padding: 5.5em 0em 5.5em 0em; max-width: 60%">
                       <p class="text-center text-h1 font-weight-bold text-white p-2">3600 €</p>
                       <div
                         style="
@@ -108,8 +99,9 @@
           </div>
         </div>
       </div>
-      <div
-        style="display: flex; flex-direction:  isMediumScreen ? 'row' : 'column'; align-items: center; justify-content: center;"
+      <div 
+        :style="{ flexDirection: $vuetify.display.smAndUp ? 'row' : 'column' }"
+        style="display: flex; align-items: center; justify-content: center;"
       >
         <v-date-picker
           elevation="24"
