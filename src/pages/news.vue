@@ -17,6 +17,15 @@
       </div>
     </div>
   </v-container>
+  <v-container v-else>
+    <div v-for="i in 5" :key="i">
+      <v-skeleton-loader
+          class="mx-auto border"
+          max-width="300"
+          type="image, article"
+      />
+    </div>
+  </v-container>
 </template>
 
 <script setup lang="ts">

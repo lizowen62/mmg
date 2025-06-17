@@ -5,7 +5,7 @@
       <v-btn text to="/news" variant="outlined" class="mx-2 mt-4"> Retour aux actualités </v-btn>
     </v-row>
     <div style="display: flex; flex-direction: column; align-items: start; justify-content: start">
-      <h1 style="font-size: 3vw; margin: 0.5em 0em 1em 0em">{{ post.title }}</h1>
+      <h1 style="margin: 1em 0em 1em 0em">{{ post.title }}</h1>
       <BlockRenderer :value="post.body" />
       <v-img
         v-if="post.mainImage"

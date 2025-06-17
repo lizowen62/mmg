@@ -1,11 +1,11 @@
 <template>
   <div
+    :style="{ width: $vuetify.display.mdAndUp ? '100%' : '95%'}"
     style="
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      width: 90%;
     "
   >
     <div
@@ -78,17 +78,43 @@
         </v-card>
       </div>
     </div>
-    <div style="width: 70%; margin-left: 1.5em">
+    <div 
+    style="margin-left: 1.5em">
       <div
         style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 1.5em"
       >
         <v-card class="mx-auto my-auto" style="display: flex; padding-inline: 1em; margin: 1em !important; flex-direction: row; align-items: center; justify-content: center; border-radius: 1em;" color="white">
           <v-icon color="orange" icon="mdi-information"></v-icon>
-          <v-card-text class="pt-4" style="font-size: 1vw; color: orange">
+          <v-card-text class="pt-4" style=" color: orange">
             Attention n'étant pas éligible a la vente en ligne cette vitrine est a titre
             informative! rendez en periode de vente pour acheter vos billet de tombola vous pouvez ici telecharger les resultats précédant sous tableur excel!
           </v-card-text>
         </v-card>
+        <div style="width: 100%; padding: 1em">
+
+<v-expansion-panels
+  v-model="panel"
+  multiple
+  width="100%"
+>
+<v-expansion-panel
+width="100%"
+value="foo"
+border-radius="2em"
+bg-color="white"
+text-color="orange"
+expand-icon="mdi-plus"
+collapse-icon="mdi-minus"
+>
+      <v-expansion-panel-title style="color: orange; max-width: 100%">
+        Question 1
+      </v-expansion-panel-title>
+      <v-expansion-panel-text style="color: orange" bg-color="white" color="orange" max-width="100%">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </v-expansion-panel-text>
+</v-expansion-panel>
+</v-expansion-panels>
+</div>
         <div class="grid">
           <div class="card" v-for="event in events" :key="event._id">
             <v-card-title style="text-align: start; color: orange">{{ event.title }}</v-card-title>
@@ -115,6 +141,15 @@
 
 <script setup lang="ts">
 import { sanity } from '../sanity';
+import { ref } from 'vue'
+
+const panel = ref([])
+  function all () {
+    panel.value = ['foo', 'bar', 'baz']
+  }
+  function none () {
+    panel.value = []
+  }
 
 interface Resultats {
   _id: string;

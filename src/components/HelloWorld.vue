@@ -3,7 +3,7 @@
 <template>
   <v-container fluid>
     <div
-      :style="{ padding: $vuetify.display.smAndUp ? '2em 0em 2em 0em' : '0em 0em 2em 0em' , flexWrap: $vuetify.display.smAndUp ? 'nowrap' : 'wrap' }"
+      :style="{ padding: $vuetify.display.smAndUp ? '2em 0em 2em 0em' : '0em 0em 2em 0em' , flexWrap: $vuetify.display.mdAndUp ? 'nowrap' : 'wrap' }"
       style="
         display: flex;
         flex-direction: row;
@@ -115,12 +115,12 @@
           v-model="highlightedDates"
         ></v-date-picker>
         <div
+          :style="{ marginLeft: $vuetify.display.smAndUp ? '1em' : '0em' }"
           style="
             display: flex;
             flex-direction: column;
             justify-content: start;
             align-items: start;
-            margin-left: 1em;
             margin-top: 1em;
           "
         >
@@ -148,7 +148,7 @@
       </div>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-      <p style="font-size: 3.5vw; margin: 0.5em 0em 0.5em 0.2em; font-weight: bold; color: orange">Nos Partenaires</p>
+      <p style="font-size: 3vw; margin: 0.5em 0em 0.5em 0.2em; font-weight: bold; color: orange">Nos Partenaires</p>
       <div
         style="
           display: flex;
