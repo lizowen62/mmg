@@ -77,6 +77,7 @@
                           variant="outlined"
                           color="white"
                           class="font-weight-bold"
+                          @click="openDialog"
                           style="border-width: 3px; margin: 1em; display: flex; padding: 1.5em"
                         >
                           Faire un don & MMG
@@ -185,6 +186,8 @@
 </style>
 
 <script setup lang="ts">
+
+import eventBus from '../eventBus'
 import { ref, onMounted } from 'vue';
 import { sanity } from '../sanity';
 import { inject } from 'vue';
@@ -197,6 +200,10 @@ interface Event {
   color: string;
   startDate: string;
   endDate: string;
+}
+
+const openDialog = () => {
+  eventBus.emit('openDialog')
 }
 
 const MediumScreen = inject('MediumScreen');

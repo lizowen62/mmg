@@ -1,54 +1,33 @@
 // @ts-nocheck
 <template>
-  <v-container fluid class="mt-10">
+  <v-container fluid>
     <v-row dense class="flex justify-center align-center">
       <div
         style="
           display: flex;
           flex-direction: row;
-          align-items: start;
+          align-items: center;
           justify-content: center;
           width: 100%;
           height: 100%;
         "
       >
         <div
-          v-if="!isSmallScreen"
           style="
             display: flex;
             flex-direction: column;
-            align-items: start;
-            justify-content: start;
-            elevation: 24;
-            background-color: white;
-            height: 100%;
-            border-radius: 1em;
-            padding: 3em 1em 5em 1.5em;
-          "
-        >
-          <p style="font-size: 1vw; color: orange">Produits de cette année</p>
-          <p style="font-size: 2vw; color: orange">Filtres :</p>
-          <v-btn
-            v-for="cat in categories"
-            :key="cat"
-            :variant="cat === selectedCategory ? 'flat' : 'outlined'"
-            color="orange"
-            class="ma-2"
-            @click="selectCategory(cat)"
-          >
-            {{ cat }}
-          </v-btn>
-        </div>
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: start;
+            align-items: center;
+            justify-content: center;
             width: 100%;
           "
         >
-          <div style="padding: 0rem 1rem 0rem 1rem">
+        <div style="width: 100%; padding: 0.5em 1rem 1em 1em;">
+        <v-sheet
+        color="white"
+        width="100%"
+        style="padding: 0rem 1rem 0rem 1rem; border-radius: 0.5em;"
+        >
+          <div style="width: 100%;">
             <v-card
               class="mx-auto"
               style="
@@ -56,19 +35,55 @@
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
-                padding-left: 1em;
+                padding-top: 0.5em;
               "
-              color="white"
+              color="transparent"
+              elevation="0" 
               width="100%"
             >
               <v-icon color="orange" icon="mdi-information"></v-icon>
-              <v-card-text class="pt-4" style="font-size: 1vw; color: orange">
+              <v-card-text style="color: orange">
                 Nos Produits ,
                 Attention n'étant pas éligible a la vente en ligne cette vitrine est a titre
                 informative! rendez en periode de vente pour acheter dans les point ventes !
               </v-card-text>
             </v-card>
           </div>
+          <v-expansion-panels
+            v-model="panel"
+            multiple
+            width="100%"
+          >
+          <v-expansion-panel
+            width="100%"
+            value="foo"
+            border-radius="2em"
+            bg-color="transparent"
+            text-color="orange"
+            elevation="0" 
+            expand-icon="mdi-plus"
+            collapse-icon="mdi-minus"
+          >
+            <v-expansion-panel-title style="color: orange; max-width: 100%">
+              Filtrer par catégorie
+            </v-expansion-panel-title>
+            <v-expansion-panel-text style="color: orange" bg-color="white" color="orange" max-width="100%">
+              <v-btn
+                v-for="cat in categories"
+                :key="cat"
+                :variant="cat === selectedCategory ? 'flat' : 'outlined'"
+                color="orange"
+                class="ma-2"
+                @click="selectCategory(cat)"
+              >
+                {{ cat }}
+              </v-btn>
+            </v-expansion-panel-text>
+           </v-expansion-panel>
+          </v-expansion-panels>
+        </v-sheet>
+        </div>
+
           <div class="grid">
             <div class="card" v-for="item in filteredArticles" :key="item._id">
               <v-hover v-slot="{ isHovering, props }">
@@ -91,10 +106,26 @@
                     <h3 class="text-h4 font-weight-light text-orange">
                       {{ item.Name }}
                     </h3>
-                    <div style="font-size: 1vw; color: orange; display: flex; align-items: start; margin-top: 1em; justify-content: start; flex-direction: column;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-direction: row; width: 100%;">
+                    <div style="color: orange; display: flex; align-items: start; margin-top: 1em; justify-content: start; flex-direction: column;">
                       <h6> Taille : {{ item.Description[0].content }}</h6>
-                      <h6> Prix : {{ item.Description[1].content }}</h6>
+                      <h6 style="font-size: 1em"> Prix : {{ item.Description[1].content }}</h6>
                     </div>
+                    <div style="display: flex; align-items: space-between; justify-content: center; flex-wrap: wrap; row-gap: 0.5em; column-gap: 0.5em;">
+                      <v-chip append-icon="mdi-check" color="orange">
+                        Chip
+                      </v-chip>
+                      <v-chip append-icon="mdi-check"   color="orange">
+                        Chip
+                      </v-chip>
+                      <v-chip append-icon="mdi-check" color="orange">
+                        Chip
+                      </v-chip>
+                      <v-chip append-icon="mdi-close" color="orange">
+                        Chip
+                      </v-chip>
+                    </div>
+                  </div>
                   </v-card-text>
                 </v-card>
               </v-hover>
@@ -110,6 +141,14 @@
 import { ref, onMounted, computed } from 'vue';
 import { sanity } from '../sanity';
 import { inject } from 'vue';
+
+const panel = ref([])
+  function all () {
+    panel.value = ['foo', 'bar', 'baz']
+  }
+  function none () {
+    panel.value = []
+  }
 
 interface Product {
   _id: string;
@@ -187,6 +226,7 @@ const getArticles = async () => {
 
 .card {
   background-color: white;
+  scale: 1.02;
   height: fit-content;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

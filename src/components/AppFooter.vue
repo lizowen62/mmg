@@ -25,7 +25,7 @@
       <p v-if="$vuetify.display.mdAndUp" style="color: white; text-decoration: none">{{ item.subtitle }}</p>
     </a>
 
-    <div class="text-caption text-disabled" style="position: absolute; right: 16px">
+    <!-- <div v-if="$vuetify.display.smAndDown" class="text-caption text-disabled" style="position: absolute; right: 16px">
       &copy; 2001-{{ new Date().getFullYear() }}
       <span class="d-none d-sm-inline-block">Monaco Maladie génétique</span>
       —
@@ -37,11 +37,20 @@
       >
         MIT License
       </a>
-    </div>
+    </div> -->
+    <!-- <div class="text-caption text-disabled" style="position: absolute; right: 1em">
+      <v-btn color="red" style="padding: 1em;" @click="openDialog">Faire un don</v-btn>
+    </div> -->
   </v-footer>
 </template>
 
 <script setup lang="ts">
+import eventBus from '../eventBus'
+
+const openDialog = () => {
+  eventBus.emit('openDialog')
+}
+
 const items = [
   {
     title: 'Facebook',

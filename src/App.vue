@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <v-parallax style="background-image: linear-gradient(to bottom, #1a1a1a, #000000)">
 
 
     <v-app-bar v-if="$vuetify.display.smAndUp" app>
@@ -14,7 +13,10 @@
 
   <!-- App-bar mobile (xsOnly) -->
   <v-app-bar v-else app>
-    <v-toolbar-title>Mon App</v-toolbar-title>
+    <v-toolbar-title>MMG</v-toolbar-title>
+    <div class="text-caption text-disabled">
+      <v-btn color="red" @click="dialog = true">Faire un don</v-btn>
+    </div>
     <v-spacer />
     <v-btn icon @click="drawer = !drawer">
       <v-icon>mdi-menu</v-icon>
@@ -73,21 +75,40 @@
         </v-carousel-item>
       </v-carousel>
 
-      <v-main>
+      <v-divider :thickness="3" color="warning"></v-divider>
+      
+      <v-main :style="{ '--v-layout-top': '1em' }">
         <transition name="fade" mode="out-in">
           <router-view :key="$route.fullPath" />
         </transition>
       </v-main>
-    </v-parallax>
+
+      <div class="text-center pa-4" style="display: flex; justify-content: center; align-items: center;">
+        <v-dialog v-model="dialog" width="auto">
+          <v-card
+            max-width="400"
+            style="display: flex; justify-content: center; align-items: center;"
+            prepend-icon="mdi-payment"
+            text="Choisissez un moyen de paiement"
+            title=""
+          >
+            <template v-slot:actions>
+              <v-btn variant="outlined" @click="dialog = false">Avec Paypal</v-btn>
+              <v-btn variant="outlined" @click="dialog = false">Avec Stripe la</v-btn>
+            </template>
+          </v-card>
+        </v-dialog>
+      </div>
 
     <AppFooter />
   </v-app>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { sanity } from './sanity';
 import { provide } from 'vue';
+import eventBus from './eventBus';
 
 interface Slider {
   title: string;
@@ -108,8 +129,17 @@ let isSmallScreen = false;
 let MediumScreen = false;
 const drawer = ref(false);
 const home = ref<Slider[]>([]);
+const dialog = ref(false);
+
+onBeforeUnmount(() => {
+  eventBus.off('open-dialog')
+})
 
 onMounted(async () => {
+  eventBus.on('openDialog', () => {
+    console.log('open dialog event')
+    dialog.value = true;
+  });
   home.value = await getArticles();
 });
 
