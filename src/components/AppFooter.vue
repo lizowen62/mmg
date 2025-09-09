@@ -25,22 +25,17 @@
       <p v-if="$vuetify.display.mdAndUp" style="color: white; text-decoration: none">{{ item.subtitle }}</p>
     </a>
 
-    <!-- <div v-if="$vuetify.display.smAndDown" class="text-caption text-disabled" style="position: absolute; right: 16px">
+    <div v-if="$vuetify.display.smAndUp" class="text-caption text-disabled" style="position: absolute; right: 16px">
       &copy; 2001-{{ new Date().getFullYear() }}
       <span class="d-none d-sm-inline-block">Monaco Maladie génétique</span>
       —
-      <a
+      <RouterLink
         class="text-decoration-none on-surface"
-        href="https://vuetifyjs.com/about/licensing/"
-        rel="noopener noreferrer"
-        target="_blank"
+        to="/contact"
       >
-        MIT License
-      </a>
-    </div> -->
-    <!-- <div class="text-caption text-disabled" style="position: absolute; right: 1em">
-      <v-btn color="red" style="padding: 1em;" @click="openDialog">Faire un don</v-btn>
-    </div> -->
+        Nous contacter
+      </RouterLink>
+    </div>
   </v-footer>
 </template>
 

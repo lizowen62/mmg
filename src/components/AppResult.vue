@@ -19,11 +19,10 @@
       width="100%"
       style="padding: 0rem 1rem 0rem 1rem; border-radius: 0.5em;"
     >
-        <v-card class="mx-auto my-auto" elevation="0" style="display: flex; padding-inline: 1em; margin-top: 1em !important; flex-direction: row; align-items: center; justify-content: center; border-radius: 1em;" color="white">
+        <v-card class="mx-auto my-auto" elevation="0" style="display: flex; padding-inline: 1em; margin-top: 1em !important; padding-top: 1em; flex-direction: row; align-items: center; justify-content: center; border-radius: 1em;" color="white">
           <v-icon color="orange" icon="mdi-information"></v-icon>
           <v-card-text class="pt-4" style=" color: orange">
-            Attention n'étant pas éligible a la vente en ligne cette vitrine est a titre
-            informative! rendez en periode de vente pour acheter vos billet de tombola vous pouvez ici telecharger les resultats précédant sous tableur excel!
+            Attention : cette vitrine n’étant pas éligible à la vente en ligne, elle est proposée uniquement à titre informatif. Pour participer et acheter vos billets de tombola, nous vous invitons à revenir durant la période officielle de vente. En attendant, vous avez la possibilité de consulter et de télécharger les résultats des précédentes éditions au format tableur Excel, afin de suivre l’historique et la transparence de nos tirages.
           </v-card-text>
         </v-card>
         <div style="width: 100%;">
@@ -46,7 +45,10 @@
                 Comment participer ?
               </v-expansion-panel-title>
               <v-expansion-panel-text style="color: orange; display: flex; align-items: center; justify-content: center;" bg-color="white" color="orange" max-width="100%">
-                <v-timeline direction="horizontal" line-inset="12">
+                <v-timeline 
+                :direction="$vuetify.display.mdAndUp ? 'horizontal' : 'vertical'"
+                line-inset="12">
+                  
     <v-timeline-item>
       <template v-slot:opposite>
         Etape 1

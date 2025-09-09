@@ -1,5 +1,20 @@
 <template>
   <v-container v-if="posts">
+    <div style="padding: 1rem">
+      <h1 style="color: orange; margin-bottom: 0.5rem" :style="{ display: $vuetify.display.mdAndDown ?  'block' : 'none' }">Présentation</h1>
+    <div class="video-row" :style="{ flexDirection: $vuetify.display.mdAndDown ?  'column' : 'row' }">
+    <div class="video" :style="{ width: $vuetify.display.mdAndDown ? '100%' : '70%' }">
+      <LiteYouTubeEmbed
+        id="86gh7GviHPw"
+        title="Présentation"
+      />
+    </div>
+    <div style="max-width: 50%; flex-direction: column; display: flex" :style="{ display: $vuetify.display.mdAndDown ?  'none' : 'flex' }">
+      <h1 style="color: orange; margin-bottom: 0.5rem">Présentation</h1>
+      <p style="font-size: large;">Cette association a pour but de promouvoir la solidarité et l'humanité. rentrer dans l'association et/ou faire un don pour soutenir l'association. ceci est une vidéo de nos activités en 2024 au Grimaldi forum</p>
+    </div>
+  </div>
+    </div>
     <div style="display: flex; flex-direction: column; align-items: start; justify-content: start">
       <div class="grid">
         <div class="card" v-for="post in posts" :key="post._id">
@@ -46,6 +61,8 @@ interface Post {
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { sanity } from '../sanity';
+import LiteYouTubeEmbed from 'vue-lite-youtube-embed'
+import 'vue-lite-youtube-embed/style.css'
 
 const route = useRoute();
 const posts = ref<Post[]>([]);
@@ -106,4 +123,20 @@ onMounted(async () => {
   height: 160px;
   object-fit: cover;
 }
+.video-row {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.video lite-youtube {
+  width: 100% !important;   /* le composant prend toute la largeur du conteneur */
+  height: auto !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 </style>

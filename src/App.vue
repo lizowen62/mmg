@@ -9,6 +9,7 @@
       <v-btn text :to="'/shop'" variant="outlined" class="mx-2">Boutique</v-btn>
       <v-btn text :to="'/result'" variant="outlined" class="mx-2">Résultat de tombola</v-btn>
       <v-btn text :to="'/galery'" variant="outlined" class="mx-2">Galerie</v-btn>
+      <!-- <v-btn text :to="'/contact'" variant="outlined" class="mx-2">Contact</v-btn> -->
     </v-app-bar>
 
   <!-- App-bar mobile (xsOnly) -->
@@ -35,6 +36,7 @@
       <v-list-item to="/shop" title="Boutique" />
       <v-list-item to="/result" title="Résultat de tombola" />
       <v-list-item to="/galery" title="Galerie" />
+      <v-list-item to="/contact" title="Contact" />
     </v-list>
   </v-navigation-drawer>
 
@@ -98,6 +100,20 @@
             </template>
           </v-card>
         </v-dialog>
+        <!-- <v-dialog v-model="dialog" width="auto">
+          <v-card
+            max-width="400"
+            style="display: flex; justify-content: center; align-items: center;"
+            prepend-icon="mdi-payment"
+            text="Choisissez un moyen de paiement"
+            title=""
+          >
+            <template v-slot:actions>
+              <v-btn variant="outlined" @click="dialog = false">Avec Paypal</v-btn>
+              <v-btn variant="outlined" @click="dialog = false">Avec Stripe la</v-btn>
+            </template>
+          </v-card>
+        </v-dialog> -->
       </div>
 
     <AppFooter />

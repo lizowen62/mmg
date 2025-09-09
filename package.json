@@ -24,6 +24,7 @@
     "prettier": "^3.5.3",
     "v-calendar": "^3.1.2",
     "vue": "^3.5.13",
+    "vue-lite-youtube-embed": "^1.2.4",
     "vuetify": "^3.8.1"
   },
   "devDependencies": {

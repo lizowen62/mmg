@@ -2452,6 +2452,11 @@ vscode-uri@^3.0.8:
   resolved "https://registry.npmjs.org/vscode-uri/-/vscode-uri-3.1.0.tgz"
   integrity sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==
 
+vue-demi@>=0.14.7:
+  version "0.14.10"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.10.tgz#afc78de3d6f9e11bf78c55e8510ee12814522f04"
+  integrity sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==
+
 vue-eslint-parser@^10.1.1:
   version "10.1.3"
   resolved "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-10.1.3.tgz"
@@ -2464,6 +2469,13 @@ vue-eslint-parser@^10.1.1:
     esquery "^1.6.0"
     lodash "^4.17.21"
     semver "^7.6.3"
+
+vue-lite-youtube-embed@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/vue-lite-youtube-embed/-/vue-lite-youtube-embed-1.2.4.tgz#18f622330a4935d385a09d94bb57bfa51cfe2ae5"
+  integrity sha512-wbhT1y9qw5djFdUb2pVUhbqdB4FXGO8UIXUsOG6UtH/85HeO7SbixuqyvQ1l0mnmnnNi0YXAYoG10staLIG9cQ==
+  dependencies:
+    vue-demi ">=0.14.7"
 
 vue-router@^4.5.0:
   version "4.5.1"

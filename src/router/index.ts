@@ -14,6 +14,7 @@ import post from '../pages/Details/post.vue';
 import NewsView from '../pages/news.vue';
 import product from '../pages/Details/product.vue';
 import galery from '../pages/galery.vue';
+import contact from '../pages/contact.vue';
 
 const routes = [
   { path: '/', component: HomeView },
@@ -23,6 +24,7 @@ const routes = [
   { path: '/post/:slug', name: 'Post', component: post, props: true },
   { path: '/product/:slug', name: 'Product', component: product, props: true },
   { path: '/galery', name: 'Galery', component: galery, props: true },
+  { path: '/contact', name: 'Contact', component: contact, props: true },
 ];
 
 const router = createRouter({

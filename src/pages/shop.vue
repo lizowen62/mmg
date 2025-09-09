@@ -44,8 +44,8 @@
               <v-icon color="orange" icon="mdi-information"></v-icon>
               <v-card-text style="color: orange">
                 Nos Produits ,
-                Attention n'étant pas éligible a la vente en ligne cette vitrine est a titre
-                informative! rendez en periode de vente pour acheter dans les point ventes !
+                Attention n'étant pas éligible et a dex effectifs réduit, pour la vente en ligne cette vitrine est a titre
+                informative! rendez en periode de vente pour acheter dans les points de ventes !
               </v-card-text>
             </v-card>
           </div>
@@ -106,24 +106,16 @@
                     <h3 class="text-h4 font-weight-light text-orange">
                       {{ item.Name }}
                     </h3>
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-direction: row; width: 100%;">
-                    <div style="color: orange; display: flex; align-items: start; margin-top: 1em; justify-content: start; flex-direction: column;">
-                      <h6> Taille : {{ item.Description[0].content }}</h6>
-                      <h6 style="font-size: 1em"> Prix : {{ item.Description[1].content }}</h6>
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-direction: column; width: 100%;">
+                    <div style="color: orange; display: flex; align-items: start; margin: 0.5em; justify-content: start; flex-direction: column;">
+                      <h6 style="font-size: large"> Prix : {{ item.Description[1].content }}</h6>
                     </div>
                     <div style="display: flex; align-items: space-between; justify-content: center; flex-wrap: wrap; row-gap: 0.5em; column-gap: 0.5em;">
-                      <v-chip append-icon="mdi-check" color="orange">
-                        Chip
-                      </v-chip>
-                      <v-chip append-icon="mdi-check"   color="orange">
-                        Chip
-                      </v-chip>
-                      <v-chip append-icon="mdi-check" color="orange">
-                        Chip
-                      </v-chip>
-                      <v-chip append-icon="mdi-close" color="orange">
-                        Chip
-                      </v-chip>
+                      <div v-for="etab in etablissement" :key="etab">
+                        <v-chip append-icon="mdi-check" color="orange">
+                          {{ etab }}
+                        </v-chip>
+                      </div>
                     </div>
                   </div>
                   </v-card-text>
@@ -176,6 +168,8 @@ const articlesPerPage = 8; // Number of articles per page
 const totalPages = computed(() =>
   Math.ceil(filteredArticles.value.length / articlesPerPage)
 );
+
+const etablissement = ["F.A.N.B", "Charles 3", "Carrefour", "ISM", "Maison des associations"];
 
 const filteredArticles = computed(() => {
   if (selectedCategory.value === 'Tout') return articles.value;
