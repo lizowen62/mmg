@@ -80,8 +80,9 @@
                           @click="openDialog"
                           style="border-width: 3px; margin: 1em; display: flex; padding: 1.5em"
                         >
-                          Faire un don & MMG
+                          Faire un don à MMG
                         </v-btn>
+                        <!-- redirige sur cagnotte perso telethon 0 probleme -->
                         <v-btn
                           v-if="isCampaign"
                           variant="outlined"

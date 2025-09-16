@@ -85,18 +85,16 @@
         </transition>
       </v-main>
 
-      <div class="text-center pa-4" style="display: flex; justify-content: center; align-items: center;">
+      <div class="text-center pa-4 my-4" style="display: flex; justify-content: center; align-items: center;">
         <v-dialog v-model="dialog" width="auto">
           <v-card
             max-width="400"
-            style="display: flex; justify-content: center; align-items: center;"
-            prepend-icon="mdi-payment"
-            text="Choisissez un moyen de paiement"
-            title=""
+            style="display: flex; justify-content: center; align-items: center; padding: 1em"
+            title="Payer avec Stripe"
           >
             <template v-slot:actions>
-              <v-btn variant="outlined" @click="dialog = false">Avec Paypal</v-btn>
-              <v-btn variant="outlined" @click="dialog = false">Avec Stripe la</v-btn>
+              <v-btn variant="outlined" @click="dialog = false">En mensuel</v-btn>
+              <v-btn variant="outlined" @click="dialog = false">En don unique</v-btn>
             </template>
           </v-card>
         </v-dialog>
