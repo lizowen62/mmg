@@ -1,9 +1,12 @@
 {
+    "presentation": "Presentation",
+    "association": "This association is dedicated to promoting solidarity, mutual support, and humanitarian values through various local and international initiatives. By joining our association or making a donation, you directly contribute to supporting our projects and strengthening our impact on those who need it most.The video below offers a glimpse of our activities held in 2024 at the Grimaldi Forum — a memorable moment of sharing, commitment, and generosity.",
     "contact": "Contact us",
     "réseaux": "Follow us on",
     "mmg": "Monaco genetic disease",
+    "WIP": "Work in proggress",
     "details": {
-        "details": "En savoir plus",
+        "details": "Read more",
         "return": "Return to news",
         "date": "Published on"
     },
@@ -30,7 +33,7 @@
       },
     "shop": {
       "filtre": "Filter by category",
-      "présentation": "Our Products , Attention n'étant pas éligible et a dex effectifs réduit, pour la vente en ligne cette vitrine est a titre informative! rendez en periode de vente pour acheter dans les points de ventes ! ",
+      "présentation": "Our Products, This showcase is designed to help you discover our products and learn more about our range. As we are not eligible for online sales and operate with a small team, we are unfortunately unable to offer direct purchases through this site. Our products are therefore available only during specific sales periods at our partner distribution points. We warmly invite you to visit us during these occasions to experience our craftsmanship and the quality of our products.",
       "categorie": {
         "technology": "Technology",
         "clothes": "Clothes",

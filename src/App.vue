@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar v-if="$vuetify.display.smAndUp" app>
-      <v-btn text :to="'/contact'" variant="outlined" color="orange" class="mx-2" style="left: 1em; font-size: large">{{ $t('donation.donation') }}</v-btn>
+      <v-btn text :to="'/contact'" variant="outlined" color="orange" class="mx-2" style="left: 1em; font-size: large">{{ $t('donation.donation_mmg') }}</v-btn>
       <v-spacer />
       <v-btn text :to="'/'" variant="outlined" class="mx-2">{{ $t('menu.home') }}</v-btn>
       <v-btn text :to="'/news'" variant="outlined" class="mx-2">{{ $t('menu.news') }}</v-btn>

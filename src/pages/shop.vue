@@ -43,9 +43,7 @@
             >
               <v-icon color="orange" icon="mdi-information"></v-icon>
               <v-card-text style="color: orange">
-                Nos Produits ,
-                Attention n'étant pas éligible et a dex effectifs réduit, pour la vente en ligne cette vitrine est a titre
-                informative! rendez en periode de vente pour acheter dans les points de ventes !
+                {{ t('shop.présentation') }}
               </v-card-text>
             </v-card>
           </div>
@@ -65,7 +63,7 @@
             collapse-icon="mdi-minus"
           >
             <v-expansion-panel-title style="color: orange; max-width: 100%">
-              Filtrer par catégorie
+              {{ t('shop.filtre') }}
             </v-expansion-panel-title>
             <v-expansion-panel-text style="color: orange" bg-color="white" color="orange" max-width="100%">
               <v-btn
@@ -84,7 +82,7 @@
         </v-sheet>
         </div>
 
-          <div class="grid">
+          <div class="grid" :style="{ gridTemplateColumns: $vuetify.display.smAndDown ? 'repeat(auto-fill, minmax(250px, 1fr))' : 'repeat(4, 1fr)' }">
             <div class="card" v-for="item in filteredArticles" :key="item._id">
               <v-hover v-slot="{ isHovering, props }">
                 <v-card color="grey-lighten-4" width="100%" v-bind="props">
@@ -136,6 +134,9 @@
 import { ref, onMounted, computed } from 'vue';
 import { sanity } from '../sanity';
 import { inject } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const panel = ref([])
   function all () {
@@ -216,7 +217,7 @@ const getArticles = async () => {
 .grid {
   display: grid;
   padding: 1.1em;
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(4, 1fr); */
   /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
   gap: 4em;
   width: 100%;

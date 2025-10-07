@@ -10,8 +10,8 @@
       />
     </div>
     <div style="max-width: 50%; flex-direction: column; display: flex" :style="{ display: $vuetify.display.mdAndDown ?  'none' : 'flex' }">
-      <h1 style="color: orange; margin-bottom: 0.5rem">Présentation</h1>
-      <p style="font-size: large;">Cette association a pour but de promouvoir la solidarité et l'humanité. rentrer dans l'association et/ou faire un don pour soutenir l'association. ceci est une vidéo de nos activités en 2024 au Grimaldi forum</p>
+      <h1 style="color: orange; margin-bottom: 0.5rem">{{ $t('presentation') }}</h1>
+      <p style="font-size: large;">{{ $t('association') }}</p>
     </div>
   </div>
     </div>
@@ -21,12 +21,12 @@
             <v-card-title style="text-align: center; color: orange">
               {{ post.title }}
             </v-card-title>
-            <v-img :aspect-ratio="16 / 9" :src="post.mainImage.asset.url" cover />
+            <v-img :aspect-ratio="16 / 9" :src="post.mainImage?.asset?.url" cover />
             <v-card-text>
-              <p style="color: orange">Publié le {{ formatDate(post.publishedAt) }}</p>
+              <p style="color: orange">{{ $t('details.date') }} {{ formatDate(post.publishedAt) }}</p>
             </v-card-text>
             <v-btn :to="`/post/${post.slug.current}`" color="orange" variant="outlined" class="mx-2 mb-2">
-              En savoir plus
+              {{ $t('details.details') }}
             </v-btn>
         </div>
       </div>

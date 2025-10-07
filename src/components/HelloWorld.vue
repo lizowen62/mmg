@@ -54,7 +54,7 @@
                           margin-bottom: 0.5em;
                         "
                       >
-                        Présentation
+                        {{ $t('presentation') }}
                       </p>
                       <!-- <div v-for="event in customEvent" :key="event._id">
                         <PortableText :value="event.body" />
