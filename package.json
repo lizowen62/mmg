@@ -15,7 +15,7 @@
     "@fontsource/roboto": "5.2.5",
     "@mdi/font": "7.4.47",
     "@popperjs/core": "^2.11.8",
-    "@portabletext/vue": "^1.0.12",
+    "@portabletext/vue": "^1.0.14",
     "@sanity/client": "^6.29.1",
     "@sanity/image-url": "^1.1.0",
     "fslightbox-vue": "^2.2.1",
@@ -24,6 +24,7 @@
     "prettier": "^3.5.3",
     "v-calendar": "^3.1.2",
     "vue": "^3.5.13",
+    "vue-i18n": "^11.1.12",
     "vue-lite-youtube-embed": "^1.2.4",
     "vuetify": "^3.8.1"
   },

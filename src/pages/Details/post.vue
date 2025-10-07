@@ -39,7 +39,7 @@ const post = ref<Post | null>(null);
 
 const getPost = async () => {
   const result = await sanity.fetch(
-    `*[_type == "post" && slug.current == $slug][0]{
+    `*[_type == "customEvent" && slug.current == $slug][0]{
     title,
     body,
     mainImage {

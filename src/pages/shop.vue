@@ -88,16 +88,19 @@
             <div class="card" v-for="item in filteredArticles" :key="item._id">
               <v-hover v-slot="{ isHovering, props }">
                 <v-card color="grey-lighten-4" width="100%" v-bind="props">
-                  <v-img :aspect-ratio="16 / 9" :src="item.Image.asset.url" cover>
+                  <v-img :aspect-ratio=" $vuetify.display.smAndDown ? 16/9 : 1" :src="item.Image?.asset?.url" cover>
                     <v-expand-transition>
                       <div
                         v-if="isHovering"
                         class="d-flex bg-orange-darken-2 v-card--reveal text-h2 text-start"
                         style="height: 100%; text-align: start; display: flex; align-items: center; justify-content: center;"
                       >
-                        <v-btn :to="`/product/${item.slug.current}`" color="white" variant="outlined" class="mx-2">
-                          En savoir plus
-                        </v-btn>
+                        <!-- <v-btn :to="`/product/${item.slug.current}`" color="white" variant="outlined" class="mx-2" disabled>
+                          Disponible toute l'année dans tout nos points de vente
+                        </v-btn> -->
+                        <p style="color: white; text-align: start; margin: 0.5em; justify-content: start; flex-direction: column; font-size: medium" >
+                          Disponible toute l'année dans tout nos points de vente
+                        </p>
                       </div>
                     </v-expand-transition>
                   </v-img>
@@ -106,11 +109,11 @@
                     <h3 class="text-h4 font-weight-light text-orange">
                       {{ item.Name }}
                     </h3>
-                    <div style="display: flex; align-items: center; justify-content: space-between; flex-direction: column; width: 100%;">
+                    <div style="display: flex; justify-content: space-between; flex-direction: column; width: 100%;" :style="{ alignItems: $vuetify.display.smAndUp ? 'start' : 'center' }">
                     <div style="color: orange; display: flex; align-items: start; margin: 0.5em; justify-content: start; flex-direction: column;">
                       <h6 style="font-size: large"> Prix : {{ item.Description[1].content }}</h6>
                     </div>
-                    <div style="display: flex; align-items: space-between; justify-content: center; flex-wrap: wrap; row-gap: 0.5em; column-gap: 0.5em;">
+                    <div style="display: flex; align-items: space-between; flex-wrap: wrap; row-gap: 0.5em; column-gap: 0.5em;" :style="{ justifyContent: $vuetify.display.smAndUp ? 'start' : 'center' }">
                       <div v-for="etab in etablissement" :key="etab">
                         <v-chip append-icon="mdi-check" color="orange">
                           {{ etab }}
@@ -212,9 +215,10 @@ const getArticles = async () => {
 <style scoped>
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 1rem;
+  padding: 1.1em;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+  gap: 4em;
   width: 100%;
 }
 

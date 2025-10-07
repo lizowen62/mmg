@@ -1,22 +1,30 @@
 <template>
   <v-app>
-
-
     <v-app-bar v-if="$vuetify.display.smAndUp" app>
+      <v-btn text :to="'/contact'" variant="outlined" color="orange" class="mx-2" style="left: 1em; font-size: large">{{ $t('donation.donation') }}</v-btn>
       <v-spacer />
-      <v-btn text :to="'/'" variant="outlined" class="mx-2">Accueil</v-btn>
-      <v-btn text :to="'/news'" variant="outlined" class="mx-2">Actualités</v-btn>
-      <v-btn text :to="'/shop'" variant="outlined" class="mx-2">Boutique</v-btn>
-      <v-btn text :to="'/result'" variant="outlined" class="mx-2">Résultat de tombola</v-btn>
-      <v-btn text :to="'/galery'" variant="outlined" class="mx-2">Galerie</v-btn>
-      <!-- <v-btn text :to="'/contact'" variant="outlined" class="mx-2">Contact</v-btn> -->
+      <v-btn text :to="'/'" variant="outlined" class="mx-2">{{ $t('menu.home') }}</v-btn>
+      <v-btn text :to="'/news'" variant="outlined" class="mx-2">{{ $t('menu.news') }}</v-btn>
+      <v-btn text :to="'/shop'" variant="outlined" class="mx-2">{{ $t('menu.shop') }}</v-btn>
+      <v-btn text :to="'/result'" variant="outlined" class="mx-2">{{ $t('menu.tombola') }}</v-btn>
+      <v-btn text :to="'/galery'" variant="outlined" class="mx-2">{{ $t('menu.gallerie') }}</v-btn>
+      <div class="flex items-center gap-2">
+    <v-btn
+      v-for="lang in languages"
+      :key="lang.code"
+      variant="text"
+      :color="locale === lang.code ? 'orange' : 'grey lighten-2'"
+      @click="changeLocale(lang.code)"
+    >
+      {{ lang.label }}
+    </v-btn>
+  </div>  
     </v-app-bar>
 
   <!-- App-bar mobile (xsOnly) -->
   <v-app-bar v-else app>
-    <v-toolbar-title>MMG</v-toolbar-title>
     <div class="text-caption text-disabled">
-      <v-btn color="red" @click="dialog = true">Faire un don</v-btn>
+      <v-btn variant="outlined" color="orange" class="mx-2" style="left: 1em; font-size: medium" @click="dialog = true">{{ $t('donation.donation') }}</v-btn>
     </div>
     <v-spacer />
     <v-btn icon @click="drawer = !drawer">
@@ -36,10 +44,21 @@
       <v-list-item to="/shop" title="Boutique" />
       <v-list-item to="/result" title="Résultat de tombola" />
       <v-list-item to="/galery" title="Galerie" />
-      <v-list-item to="/contact" title="Contact" />
+      <!-- <v-list-item to="/contact" title="Contact" /> -->
+      <div style="margin-top: 1em;">
+        <v-btn
+        v-for="lang in languages"
+        :key="lang.code"
+        variant="text"
+        style="display: flex; flex-direction: column;"
+        :color="locale === lang.code ? 'orange' : 'grey lighten-2'"
+        @click="changeLocale(lang.code)"
+      >
+        {{ lang.label }}
+      </v-btn>
+      </div>
     </v-list>
   </v-navigation-drawer>
-
 
 
       <v-carousel
@@ -51,31 +70,36 @@
         cycle
         hide-delimiter-background
       >
-        <v-carousel-item v-for="(slide, i) in home" :key="i">
-          <v-sheet height="100%">
-            <v-img :src="slide.mainImage?.asset?.url" height="100%" cover>
-              <template #default>
-                <div
-                  class="d-flex align-center justify-center fill-height text-white"
-                  style="flex-direction: column; gap: 1em"
-                >
-                  <h1 style="font-size: 5vw" class="font-weight-bold text-white">
-                    {{ slide.title }}
-                  </h1>
-                  <v-btn
-                    text
-                    :to="'/post/' + (slide?.slug?.current ?? '')"
-                    variant="outlined"
-                    class="mx-2"
-                  >
-                    En savoir plus
-                  </v-btn>
-                </div>
-              </template>
-            </v-img>
-          </v-sheet>
-        </v-carousel-item>
-      </v-carousel>
+  <v-carousel-item 
+    v-for="(slide, i) in home" 
+    :key="i"
+  >
+    <v-sheet height="100%">
+      <!-- On englobe l'image ET le contenu dans un router-link -->
+      <router-link 
+        :to="`/post/${slide?.slug?.current ?? ''}`"
+        style="display: block; height: 100%; text-decoration: none; color: inherit;"
+      >
+        <v-img 
+          :src="slide.mainImage?.asset?.url" 
+          height="100%" 
+          cover
+        >
+          <template #default>
+            <div
+              class="d-flex align-center justify-center fill-height text-white"
+              style="flex-direction: column; gap: 1em"
+            >
+              <h1 style="font-size: 5vw" class="font-weight-bold text-white">
+                {{ slide.title }}
+              </h1>
+            </div>
+          </template>
+        </v-img>
+      </router-link>
+    </v-sheet>
+  </v-carousel-item>
+</v-carousel>
 
       <v-divider :thickness="3" color="warning"></v-divider>
       
@@ -93,8 +117,8 @@
             title="Payer avec Stripe"
           >
             <template v-slot:actions>
-              <v-btn variant="outlined" @click="dialog = false">En mensuel</v-btn>
-              <v-btn variant="outlined" @click="dialog = false">En don unique</v-btn>
+              <v-btn variant="outlined" @click="dialog = false">{{ $t('donation.donation_monthly') }}</v-btn>
+              <v-btn variant="outlined" @click="dialog = false">{{ $t('donation.donation') }}</v-btn>
             </template>
           </v-card>
         </v-dialog>
@@ -123,6 +147,10 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { sanity } from './sanity';
 import { provide } from 'vue';
 import eventBus from './eventBus';
+import { useI18n } from 'vue-i18n'
+
+
+const { locale } = useI18n()
 
 interface Slider {
   title: string;
@@ -144,6 +172,14 @@ let MediumScreen = false;
 const drawer = ref(false);
 const home = ref<Slider[]>([]);
 const dialog = ref(false);
+const languages = [
+  { code: 'fr', label: 'Français'},
+  { code: 'en', label: 'English'},
+]
+
+const changeLocale = (lang) => {
+  locale.value = lang
+}
 
 onBeforeUnmount(() => {
   eventBus.off('open-dialog')

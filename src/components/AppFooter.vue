@@ -22,25 +22,28 @@
         color="white"
         :size="item.icon === '$vuetify' ? 24 : 16"
       />
-      <p v-if="$vuetify.display.mdAndUp" style="color: white; text-decoration: none">{{ item.subtitle }}</p>
+      <p v-if="$vuetify.display.mdAndUp" style="color: white; text-decoration: none">{{ t('réseaux') }} {{ item.subtitle }}</p>
     </a>
 
     <div v-if="$vuetify.display.smAndUp" class="text-caption text-disabled" style="position: absolute; right: 16px">
       &copy; 2001-{{ new Date().getFullYear() }}
-      <span class="d-none d-sm-inline-block">Monaco Maladie génétique</span>
+      <span class="d-none d-sm-inline-block">{{ t('mmg') }}</span>
       —
       <RouterLink
         class="text-decoration-none on-surface"
         to="/contact"
       >
-        Nous contacter
+        {{ t('contact') }}
       </RouterLink>
     </div>
   </v-footer>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import eventBus from '../eventBus'
+
+const { t } = useI18n()
 
 const openDialog = () => {
   eventBus.emit('openDialog')
@@ -49,13 +52,13 @@ const openDialog = () => {
 const items = [
   {
     title: 'Facebook',
-    subtitle: 'Suivez nous sur Facebook',
+    subtitle: 'Facebook',
     icon: `mdi-facebook`,
     href: 'https://vuetifyjs.com/',
   },
   {
     title: 'Instagram',
-    subtitle: 'Suivez nous sur Instagram',
+    subtitle: 'Instagram',
     icon: 'mdi-instagram',
     href: 'https://support.vuetifyjs.com/',
   },
@@ -63,7 +66,7 @@ const items = [
     title: 'X',
     subtitle: 'Twitter',
     icon: `mdi-twitter`,
-    href: 'https://x.com/vuetifyjs',
+    href: 'https://x.com/Telethon_France',
   },
 ];
 </script>

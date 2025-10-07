@@ -56,12 +56,11 @@
                       >
                         Présentation
                       </p>
-                      <p class="text-left font-weight-bold text-white p-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. djiiirfl. Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.
-                      </p>
+                      <!-- <div v-for="event in customEvent" :key="event._id">
+                        <PortableText :value="event.body" />
+                        <p class="text-left font-weight-bold text-white p-2">{{ event.title1 }}</p>
+                      </div> -->
+                      <p class="text-left font-weight-bold text-white p-2">{{ $t('présentation.présentation') }}</p>
                     </v-card-text>
                     <v-card-text v-if="$vuetify.display.smAndUp" style="padding: 5.5em 0em 5.5em 0em; max-width: 60%">
                       <p class="text-center text-h1 font-weight-bold text-white p-2">3600 €</p>
@@ -80,7 +79,7 @@
                           @click="openDialog"
                           style="border-width: 3px; margin: 1em; display: flex; padding: 1.5em"
                         >
-                          Faire un don à MMG
+                          {{ $t('donation.donation_mmg') }}
                         </v-btn>
                         <!-- redirige sur cagnotte perso telethon 0 probleme -->
                         <v-btn
@@ -90,7 +89,7 @@
                           class="font-weight-bold"
                           style="border-width: 3px; margin: 1em; display: flex; padding: 1.5em"
                         >
-                          Faire un don au téléthon
+                          {{ $t('donation.donation_telethon') }}
                         </v-btn>
                       </div>
                     </v-card-text>
@@ -126,7 +125,7 @@
             margin-top: 1em;
           "
         >
-          <p class="text-center font-weight-bold text-white">Prochain événement</p>
+          <p class="text-center font-weight-bold text-white">{{ $t('présentation.evenements') }}</p>
           <div
             style="
               display: flex;
@@ -137,20 +136,21 @@
             "
           >
             <v-chip
-              v-for="date in articles"
-              :key="date"
-              :color="date.color"
+              v-for="date in customEvent"
+              :key="date._id"
+              :color="codecouleur[date.selection]"
               variant="flat"
               style="margin: 0.5em"
+              :to="`/post/${date.slug.current}`"
             >
-              {{ date.heroTitle }}
+              {{ date.title }}
             </v-chip>
           </div>
         </div>
       </div>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-      <p style="font-size: 3vw; margin: 0.5em 0em 0.5em 0.2em; font-weight: bold; color: orange">Nos Partenaires</p>
+      <p style="font-size: 3vw; margin: 0.5em 0em 0.5em 0.2em; font-weight: bold; color: orange">{{ $t('présentation.partenaires') }}</p>
       <div
         style="
           display: flex;
@@ -194,6 +194,16 @@ import { sanity } from '../sanity';
 import { inject } from 'vue';
 import logo from '@/assets/image/logo-gouvernement-princier.png';
 import logoMMG from '@/assets/image/logoMMG.png';
+import { PortableText } from '@portabletext/vue'
+
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+
+const codecouleur = {
+  "a": 'orange',
+  "b": 'yellow',
+  "c": 'pink',
+}
 
 interface Event {
   _id: string;
@@ -201,6 +211,19 @@ interface Event {
   color: string;
   startDate: string;
   endDate: string;
+}
+
+interface CustomEvent {
+  _id: string;
+  title: string;
+  slug: string;
+  mainImage: any;
+  publishedAt: string;
+  isCalendar: boolean;
+  isFeatured: boolean;
+  selection: string;
+  eventDate: string;
+  body: any;
 }
 
 const openDialog = () => {
@@ -211,21 +234,18 @@ const MediumScreen = inject('MediumScreen');
 const isSmallScreen = inject('isSmallScreen');
 const isCampaign = inject('isCampaign');
 const articles = ref<Event[]>([]);
+const customEvent = ref<CustomEvent[]>([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
-
-const categories = [
-  {title: "Actualités", color: "orange"},
-  {title: "Téléthon", color: "orange"},
-  {title: "Tombola", color: "orange"},
-];
 
 const highlightedDates = ref(['2025-05-01', '2025-05-15', '2025-05-20']);
 
 onMounted(async () => {
-  articles.value = await getArticles();
-  highlightedDates.value = articles.value.map((article: Event) => article.startDate);
-  console.log(articles.value);
+  // articles.value = await getArticles();
+  customEvent.value = await getCustomEvent()
+  highlightedDates.value = customEvent.value.map((article: CustomEvent) => article.eventDate);
+  console.log('event-----------------')
+  console.log(customEvent)
 });
 
 const getArticles = async () => {
@@ -236,4 +256,28 @@ const getArticles = async () => {
         endDate,
     }`);
 };
+
+const handleClick = (event: Event) => {
+  eventBus.emit('selectedEvent', event);
+};
+
+const getCustomEvent = async () => {
+  return await sanity.fetch(`
+    *[_type == "customEvent" && (isFeatured == true || isCalendar == true)]{
+      title,
+      slug,
+      mainImage {
+        asset-> {
+          url
+        }
+      },
+      publishedAt,
+      isCalendar,
+      isFeatured,
+      selection,
+      eventDate,
+    }
+  `);
+};
+
 </script>

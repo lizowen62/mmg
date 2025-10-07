@@ -1,0 +1,53 @@
+{
+    "contact": "Contact us",
+    "réseaux": "Follow us on",
+    "mmg": "Monaco genetic disease",
+    "details": {
+        "details": "En savoir plus",
+        "return": "Return to news",
+        "date": "Published on"
+    },
+    "menu": {
+        "home": "Home",
+        "news": "News",
+        "shop": "Store showcase",
+        "tombola": "Lottery results",
+        "gallerie": "Image gallery"
+      },
+    "donation": {
+        "donation": "Make a unique donation",
+        "donation_monthly": "Make a monthly donation",
+        "donation_telethon": "Make a donation to the telethon",
+        "donation_mmg": "Make a donation to MMG"
+    },
+    "présentation": {
+        "présentation": "Welcome to the MMG website, the portal of the association created since 200X and which since its beginnings has the purpose of reproducing with the French telethon in the Principality. You can follow our news, tombola results, make donations, follow the donation pot, consult our networks and consult our product catalogues available",
+        "partenaires": "Partners",
+        "facebook": "Follow us on Facebook",
+        "twitter": "Follow us on Twitter",
+        "instagram": "Follow us on Instagram",
+        "evenements": "Upcoming events"
+      },
+    "shop": {
+      "filtre": "Filter by category",
+      "présentation": "Our Products , Attention n'étant pas éligible et a dex effectifs réduit, pour la vente en ligne cette vitrine est a titre informative! rendez en periode de vente pour acheter dans les points de ventes ! ",
+      "categorie": {
+        "technology": "Technology",
+        "clothes": "Clothes",
+        "plush": "Plush",
+        "accessories": "Accessories"
+      }
+    },
+    "resultat": {
+      "présentation": "Warning : this Store showcase is not eligible for online sales, it is only proposed for information. To participate and buy your tombola tickets, we invite you to come back during the official sales period. In the meantime, you have the possibility to consult and download the results of previous editions in Excel format, to follow the history and transparency of our draws. ",
+      "instructions": {
+        "instructions": "How to participate ?",
+        "first": "step 1",
+        "second": "step 2",
+        "third": "step 3",
+        "etape 1": "Take my ticket at the point of sale and leave my information",
+        "etape 2": "Follow on social networks for draws",
+        "etape 3": "I am automatically contacted or I can consult the results file"
+      }
+    }
+}

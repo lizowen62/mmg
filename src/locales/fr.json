@@ -1,0 +1,53 @@
+{
+    "contact": "Nous contacter",
+    "réseaux": "Nous suivre sur",
+    "mmg": "Monaco Maladie génétique",
+    "details": {
+        "details": "En savoir plus",
+        "return": "Retour aux actualités",
+        "date": "Publié le"
+    },
+    "menu": {
+        "home": "Accueil",
+        "news": "Nos actualités",
+        "shop": "Notre Vitrine",
+        "tombola": "Résultat des tombola",
+        "gallerie": "Galerie"
+      },
+    "donation": {
+        "donation": "Faire un don unique",
+        "donation_monthly": "Faire un don mensuel",
+        "donation_telethon": "Faire un don au téléthon",
+        "donation_mmg": "Faire un don à MMG"
+    },
+    "présentation": {
+        "présentation": "Bienvenue sur le site de MMG le portail de l'association creer depuis 200X  et qui depuis ces débuts a pour but de reproduire avec le téléthon français dans la principauté. Vous pouvez suivre nos actualités , résultat des tombolas , faire des dons, suivre le cagnotte de dons , consulter nos réseaux et consulter notre catalogues de produits disponibles ",
+        "partenaires": "Partenaires",
+        "facebook": "Suivez nous surFacebook",
+        "twitter": "Suivez nous sur Twitter",
+        "instagram": "Suivez nous sur Instagram",
+        "evenements": "Prochain événements"
+      },
+    "shop": {
+      "filtre": "Filtrer par catégorie",
+      "présentation": "Nos Produits , Attention n'étant pas éligible et a dex effectifs réduit, pour la vente en ligne cette vitrine est a titre informative! rendez en periode de vente pour acheter dans les points de ventes ! ",
+      "categorie": {
+        "technology": "Technologie",
+        "clothes": "Vêtements",
+        "plush": "Doudou",
+        "accessories": "Accessoires"
+      }
+    },
+    "resultat": {
+      "présentation": "Attention : cette vitrine n’étant pas éligible à la vente en ligne, elle est proposée uniquement à titre informatif. Pour participer et acheter vos billets de tombola, nous vous invitons à revenir durant la période officielle de vente. En attendant, vous avez la possibilité de consulter et de télécharger les résultats des précédentes éditions au format tableur Excel, afin de suivre l’historique et la transparence de nos tirages. ",
+      "instructions": {
+        "instructions": "Comment participer ?",
+        "first": "etape 1",
+        "second": "etape 2",
+        "third": "etape 3",
+        "etape 1": "Prendre mon ticket en point de vente et laisser mes informations",
+        "etape 2": "Suivre sur les réseaux sociaux pour les tirages au sort",
+        "etape 3": " Je suis automatiquement contacter ou je peux consulter les tableur de résultats"
+      }
+    }
+}

@@ -67,18 +67,34 @@ import 'vue-lite-youtube-embed/style.css'
 const route = useRoute();
 const posts = ref<Post[]>([]);
 
+// const getPost = async () => {
+//   return await sanity.fetch(`*[_type == "post"]{
+//     title,
+//     body,
+//     slug,
+//     publishedAt,
+//     mainImage {
+//       asset->{
+//         url
+//       }
+//     }
+//   }`);
+// };
+
 const getPost = async () => {
-  return await sanity.fetch(`*[_type == "post"]{
-    title,
-    body,
-    slug,
-    publishedAt,
-    mainImage {
-      asset->{
-        url
-      }
+  return await sanity.fetch(`
+    *[_type == "customEvent"] | order(publishedAt desc){
+      title,
+      slug,
+      mainImage {
+        asset-> {
+          url
+        }
+      },
+      publishedAt,
+      selection,
     }
-  }`);
+  `);
 };
 
 function formatDate(dateStr: string) {
