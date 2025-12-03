@@ -8,3 +8,40 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+
+// ----- Couleurs -----
+$primary: #f6fbff;
+$secondary: #cfcfcf;
+$third: #f6fbff;
+$success: #4caf50;
+$card-bg: #97befa;
+$blue: #72abff;
+$yellow: #f7d900;
+$pink: #ff78c7;
+$pink-test: #e9389f;
+$button-color: #A0004F;
+$color-text: #000000;
+$color-text-secondary: #4b4b4bea;
+$color-primary: #f6fbff;
+$color-bg: #F3F3F3;
+$color-bg-secondary: #ffffff3b;
+
+// ----- Dimensions -----
+$border-radius: 12px;
+$spacing-base: 16px;
+
+// ----- improtant -----
+.color-text {
+    color: $pink !important;
+  }
+
+.color-icon {
+    color: $button-color !important;
+}
+
+.color-text-secondary {
+    color: $color-text-secondary !important;
+  }
+
+

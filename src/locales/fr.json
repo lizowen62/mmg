@@ -2,9 +2,11 @@
     "presentation": "Présentation",
     "association": "Cette association a pour mission de promouvoir la solidarité, l’entraide et les valeurs d’humanité à travers diverses actions locales et internationales. En rejoignant notre association ou en effectuant un don, vous contribuez directement à soutenir nos projets et à renforcer notre impact auprès des personnes qui en ont le plus besoin.La vidéo ci-dessous présente un aperçu de nos activités menées en 2024 au Grimaldi Forum — un moment fort de partage, d’engagement et de générosité.",
     "contact": "Nous contacter",
+    "banner": "J-3 Avant l'ouverture de la campagne du téléthon ! vous pouvez donnez directement sur la cagnote de téléthon FR ou bien à MMG",
     "réseaux": "Nous suivre sur",
     "mmg": "Monaco Maladie génétique",
     "WIP": "Page en construction",
+    "aboutUs": "📍 Contact – La Résidence Azur est située au 11–13, rue Louis Auréglia, 98000 Monaco. Notre établissement est constitué conformément aux dispositions de la loi n°1.335 du 23 décembre 2008 relative aux résidences avec services.",
     "details": {
         "details": "En savoir plus",
         "return": "Retour aux actualités",
@@ -15,8 +17,21 @@
         "news": "Nos actualités",
         "shop": "Notre Vitrine",
         "tombola": "Résultat des tombola",
-        "gallerie": "Galerie"
+        "gallerie": "Galerie",
+        "cart": "Panier"
       },
+    "store": {
+      "checkout_summary": "Récapitulatif de votre commande",
+      "cart": "Panier",
+      "quantity": "Quantité",
+      "validation": "Valider la commande",
+      "cart_count": "{{ cartCount }} articles",
+      "back_to_shop": "Retour à la boutique",
+      "empty_cart": "Votre panier est vide",
+      "clear_cart": "Vider le panier",
+      "checkout": "Valider la commande",
+      "checkout_explanation": "Une fois votre commande valider vous ne payer rien selectionner un lieu de clique and collect puis cliquer sur valider la commande" 
+    },
     "donation": {
         "donation": "Faire un don unique",
         "donation_monthly": "Faire un don mensuel",
@@ -24,7 +39,7 @@
         "donation_mmg": "Faire un don à MMG"
     },
     "présentation": {
-        "présentation": "Bienvenue sur le site de MMG le portail de l'association creer depuis 200X  et qui depuis ces débuts a pour but de reproduire avec le téléthon français dans la principauté. Vous pouvez suivre nos actualités , résultat des tombolas , faire des dons, suivre le cagnotte de dons , consulter nos réseaux et consulter notre catalogues de produits disponibles ",
+        "présentation": "Bienvenue sur le site de MMG le portail de l'association creer depuis 200X  et qui depuis ses débuts a pour but de reproduire le téléthon français dans la principauté. Vous pouvez suivre nos actualités , résultat des tombolas , faire des dons, suivre le cagnotte de dons , consulter nos réseaux et consulter notre catalogues de produits disponibles ",
         "actualités": "",
         "partenaires": "Partenaires",
         "facebook": "Suivez nous surFacebook",

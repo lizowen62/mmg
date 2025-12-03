@@ -7,10 +7,14 @@
 // Plugins
 import { registerPlugins } from '@/plugins';
 
+import { setupCalendar } from 'v-calendar';
+import 'v-calendar/style.css';
+
 // Components
 import App from './App.vue';
 
 import { createI18n } from 'vue-i18n';
+
 
 // Composables
 import { createApp } from 'vue';
@@ -36,5 +40,8 @@ const app = createApp(App);
 registerPlugins(app);
 
 app.use(i18n);
+
+// Use calendar defaults (optional)
+app.use(setupCalendar, {})
 
 app.mount('#app');

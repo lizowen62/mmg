@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="portable-text">
     <PortableText :value="value" :components="myComponents" />
   </div>
 </template>
@@ -32,3 +32,17 @@ const myComponents = {
   },
 };
 </script>
+
+<style lang="scss">
+.portable-text {
+  color: $blue;        // couleur globale
+}
+
+.portable-text h2 {
+  color: $blue;        // exemple : titres bleus
+}
+
+.portable-text p {
+  color: $color-text-secondary;           // paragraphes gris
+}
+</style>

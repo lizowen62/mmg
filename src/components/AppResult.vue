@@ -15,13 +15,12 @@
     >
     <div style="margin: 0.5em 0em 0.5em 0em !important; padding: 1em">
     <v-sheet
-      color="white"
       width="100%"
       style="padding: 0rem 1rem 0rem 1rem; border-radius: 0.5em;"
     >
-        <v-card class="mx-auto my-auto" elevation="0" style="display: flex; padding-inline: 1em; margin-top: 1em !important; padding-top: 1em; flex-direction: row; align-items: center; justify-content: center; border-radius: 1em;" color="white">
-          <v-icon color="orange" icon="mdi-information"></v-icon>
-          <v-card-text class="pt-4" style=" color: orange">
+        <v-card class="mx-auto my-auto" elevation="0" style="display: flex; padding-inline: 1em; margin-top: 1em !important; padding-top: 1em; flex-direction: row; align-items: center; justify-content: center; border-radius: 1em;">
+          <v-icon class="color-text" icon="mdi-information"></v-icon>
+          <v-card-text class="color-text-secondary pt-4">
             {{ t('resultat.présentation') }}
           </v-card-text>
         </v-card>
@@ -35,16 +34,15 @@
               width="100%"
               value="foo"
               border-radius="2em"
-              bg-color="white"
               text-color="orange"
               elevation="0"
               expand-icon="mdi-plus"
               collapse-icon="mdi-minus"
               >
-              <v-expansion-panel-title style="color: orange; max-width: 100%">
+              <v-expansion-panel-title class="color-text-secondary" style="color: orange; max-width: 100%">
                 {{ t('resultat.instructions.instructions') }}
               </v-expansion-panel-title>
-              <v-expansion-panel-text style="color: orange; display: flex; align-items: center; justify-content: center;" bg-color="white" color="orange" max-width="100%">
+              <v-expansion-panel-text class="color-text-secondary" style="display: flex; align-items: center; justify-content: center;" class="v-theme--dark" max-width="100%">
                 <v-timeline 
                 :direction="$vuetify.display.mdAndUp ? 'horizontal' : 'vertical'"
                 line-inset="12">
@@ -76,25 +74,28 @@
       </div>
     </v-sheet>
     </div>
-        <div class="grid">
-          <div class="card" v-for="event in events" :key="event._id">
-            <v-card-title style="text-align: start; color: orange">{{ event.title }}</v-card-title>
-            <v-card-actions>
-              <v-btn
-                v-if="event.file?.asset?.url"
-                :href="event.file.asset.url"
-                download
-                color="primary"
-              >
-                <v-icon icon="mdi-download" color="orange"></v-icon>
-                <p style="color: orange; padding-left: 1em">
-                  Télécharger {{ event.file.asset.originalFilename || 'le fichier' }}
-                </p>
-              </v-btn>
-              <v-chip v-else color="red" text-color="white">Aucun fichier disponible</v-chip>
-            </v-card-actions>
-          </div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+      <v-divider :thickness="4" color="orange" ></v-divider>
+      <div class="grid">
+        <div class="card " v-for="event in events" :key="event._id">
+          <v-card-title style="text-align: start; color: orange">{{ event.title }}</v-card-title>
+          <v-card-actions>
+            <v-btn
+              v-if="event.file?.asset?.url"
+              :href="event.file.asset.url"
+              download
+              color="primary"
+            >
+              <v-icon icon="mdi-download" color="orange"></v-icon>
+              <p style="color: orange; padding-left: 1em">
+                Télécharger {{ event.file.asset.originalFilename || 'le fichier' }}
+              </p>
+            </v-btn>
+            <v-chip v-else color="red" text-color="white">Aucun fichier disponible</v-chip>
+          </v-card-actions>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -191,8 +192,9 @@ const items = [
 }
 
 .card {
-  background-color: white;
   height: fit-content;
+  background-color: v-theme--dark;
+  color: v-theme--dark;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;

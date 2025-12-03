@@ -15,16 +15,19 @@ import NewsView from '../pages/news.vue';
 import product from '../pages/Details/product.vue';
 import galery from '../pages/galery.vue';
 import contact from '../pages/contact.vue';
+import CheckoutView from '../pages/Store/Checkout.vue';
+import ShowcaseView from '../pages/Store/Showcase.vue';
 
 const routes = [
   { path: '/', component: HomeView },
-  { path: '/shop', component: ShopView },
+  { path: '/shop', component: ShowcaseView },
   { path: '/result', component: ResultView },
   { path: '/news', component: NewsView },
   { path: '/post/:slug', name: 'Post', component: post, props: true },
   { path: '/product/:slug', name: 'Product', component: product, props: true },
   { path: '/galery', name: 'Galery', component: galery, props: true },
   { path: '/contact', name: 'Contact', component: contact, props: true },
+  { path: '/Store/Checkout', name: 'Checkout', component: CheckoutView, props: true },
 ];
 
 const router = createRouter({

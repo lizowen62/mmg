@@ -10,24 +10,20 @@
       />
     </div>
     <div style="max-width: 50%; flex-direction: column; display: flex" :style="{ display: $vuetify.display.mdAndDown ?  'none' : 'flex' }">
-      <h1 style="color: orange; margin-bottom: 0.5rem">{{ $t('presentation') }}</h1>
-      <p style="font-size: large;">{{ $t('association') }}</p>
+      <h1 class="title" style="color: orange; margin-bottom: 0.5rem">{{ $t('presentation') }}</h1>
+      <p class="text" style="font-size: large;">{{ $t('association') }}</p>
     </div>
   </div>
     </div>
     <div style="display: flex; flex-direction: column; align-items: start; justify-content: start">
       <div class="grid">
         <div class="card" v-for="post in posts" :key="post._id">
-            <v-card-title style="text-align: center; color: orange">
+            <v-card-title class="news" style="text-align: center; color: orange">
               {{ post.title }}
             </v-card-title>
-            <v-img :aspect-ratio="16 / 9" :src="post.mainImage?.asset?.url" cover />
-            <v-card-text>
-              <p style="color: orange">{{ $t('details.date') }} {{ formatDate(post.publishedAt) }}</p>
-            </v-card-text>
-            <v-btn :to="`/post/${post.slug.current}`" color="orange" variant="outlined" class="mx-2 mb-2">
-              {{ $t('details.details') }}
-            </v-btn>
+            <RouterLink :to="`/post/${post.slug.current}`" style="text-decoration: none;">
+              <v-img :aspect-ratio="7 / 9" :src="post.mainImage?.asset?.url" cover />
+            </RouterLink>
         </div>
       </div>
     </div>
@@ -67,19 +63,6 @@ import 'vue-lite-youtube-embed/style.css'
 const route = useRoute();
 const posts = ref<Post[]>([]);
 
-// const getPost = async () => {
-//   return await sanity.fetch(`*[_type == "post"]{
-//     title,
-//     body,
-//     slug,
-//     publishedAt,
-//     mainImage {
-//       asset->{
-//         url
-//       }
-//     }
-//   }`);
-// };
 
 const getPost = async () => {
   return await sanity.fetch(`
@@ -96,18 +79,6 @@ const getPost = async () => {
     }
   `);
 };
-
-function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
-  return new Intl.DateTimeFormat('fr-FR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'Europe/Paris',
-  }).format(date);
-}
 
 onMounted(async () => {
   posts.value = await getPost();
@@ -148,6 +119,7 @@ onMounted(async () => {
 }
 
 
+
 .video lite-youtube {
   width: 100% !important;   /* le composant prend toute la largeur du conteneur */
   height: auto !important;
@@ -156,3 +128,20 @@ onMounted(async () => {
 }
 
 </style>
+
+<style lang="scss">
+
+.news {
+  color: $blue !important;
+}
+
+.title {
+  color: $blue !important;
+}
+
+.text {
+  color: $color-text-secondary !important;
+}
+
+</style>
+

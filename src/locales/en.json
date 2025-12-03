@@ -3,19 +3,34 @@
     "association": "This association is dedicated to promoting solidarity, mutual support, and humanitarian values through various local and international initiatives. By joining our association or making a donation, you directly contribute to supporting our projects and strengthening our impact on those who need it most.The video below offers a glimpse of our activities held in 2024 at the Grimaldi Forum — a memorable moment of sharing, commitment, and generosity.",
     "contact": "Contact us",
     "réseaux": "Follow us on",
+    "banner": " 3 Days before the opening of the Telethon campaign! You can donate directly to the official Telethon France fund or to MMG.",
     "mmg": "Monaco genetic disease",
     "WIP": "Work in proggress",
+    "aboutUs": "📍 Contact – Résidence Azur is located at 11–13 Rue Louis Auréglia, 98000 Monaco. Our establishment is organized in accordance with the provisions of Law No. 1.335 of 23 December 2008 relating to serviced residences.",
     "details": {
         "details": "Read more",
         "return": "Return to news",
         "date": "Published on"
+    },
+    "store": {
+      "checkout_summary": "Checkout summary",
+      "cart": "Cart",
+      "quantity": "Quantity",
+      "validation": "Validate order",
+      "cart_count": "{{ cartCount }} items",
+      "back_to_shop": "Back to shop",
+      "empty_cart": "Your cart is empty",
+      "clear_cart": "Clear cart",
+      "checkout": "Checkout",
+      "checkout_explanation": "Once your order is validated you will not have to pay anything, select a pickup point and collect, then click on validate order"
     },
     "menu": {
         "home": "Home",
         "news": "News",
         "shop": "Store showcase",
         "tombola": "Lottery results",
-        "gallerie": "Image gallery"
+        "gallerie": "Image gallery",
+        "cart": "Cart"
       },
     "donation": {
         "donation": "Make a unique donation",
