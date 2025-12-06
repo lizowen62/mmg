@@ -1,13 +1,12 @@
 <template>
     <v-container class="py-10">
       <v-sheet
-        class="v-theme--dark"
         width="100%"
         style="padding: 0rem 1rem 0rem 1rem; border-radius: 0.5em;"
         >
           <div style="width: 100%;">
             <v-card
-              class="mx-auto v-theme--dark"
+              class="mx-auto"
               style="
                 display: flex;
                 flex-direction: row;
@@ -19,7 +18,7 @@
               elevation="0" 
               width="100%"
             >
-              <v-card-text style="color: orange">
+              <v-card-text class="color-text-secondary">
                 {{ t('shop.présentation') }}
               </v-card-text>
             </v-card>
@@ -37,10 +36,10 @@
               expand-icon="mdi-plus"
               collapse-icon="mdi-minus"
               >
-              <v-expansion-panel-title style="color: orange; max-width: 100%">
+              <v-expansion-panel-title class="color-text-secondary" style="max-width: 100%">
                 {{ t('resultat.instructions.instructions') }}
               </v-expansion-panel-title>
-              <v-expansion-panel-text style="color: orange; display: flex; align-items: center; justify-content: center;" bg-color="white" color="orange" max-width="100%">
+              <v-expansion-panel-text class="color-text-secondary" style="display: flex; align-items: center; justify-content: center;" bg-color="white" color="orange" max-width="100%">
                 <v-timeline 
                 :direction="$vuetify.display.mdAndUp ? 'horizontal' : 'vertical'"
                 line-inset="12">
@@ -71,7 +70,7 @@
         </v-expansion-panels>
           </div>
       </v-sheet>
-      <v-divider  style="margin-top: 2em; margin-bottom: 2em;" :thickness="2"></v-divider>
+      <v-divider  style="margin-top: 2em; margin-bottom: 2em;" :thickness="2" class="color-icon"></v-divider>
   
       <!-- 🛍️ Liste des produits -->
       <v-row v-if="cart?.items?.length">
@@ -113,12 +112,12 @@
             <v-card-title class="font-weight-bold">Résumé</v-card-title>
   
             <v-card-text>
-              <div class="d-flex justify-space-between mb-2">
+              <div class="d-flex justify-space-between mb-2 color-text">
                 <span>Sous-total</span>
                 <span>{{ cart.subtotal }} €</span>
               </div>
   
-              <div class="d-flex justify-space-between mb-2">
+              <div class="d-flex justify-space-between mb-2 color-text">
                 <span>Frais de livraison</span>
                 <span>
                   {{ cart.shipping_total }} €
@@ -139,7 +138,7 @@
             <div class="d-flex justify-space-between" style="flex-direction: column; align-items: start">
               <v-card-actions>
                 <v-btn
-                  color="orange"
+                  class="color-icon"
                   block
                   @click="checkout"
                   :loading="loading"
@@ -149,7 +148,7 @@
               </v-card-actions>
               <v-card-actions>
                 <v-btn
-                  color="orange"
+                  class="color-icon"
                   block
                   @click="EmptyCart"
                 >

@@ -1,8 +1,9 @@
 import { ref, computed } from "vue" // ⚠️ Import manquant de 'computed'
 
+
 // ⚙️ Configuration Medusa
-const MEDUSA_URL = "http://localhost:9000"
-const MEDUSA_KEY = "pk_44ca2dffa22441117d4799b94ac85a4f7f9f16f8b133b64712813e33bec72a37"
+const MEDUSA_URL = import.meta.env.VITE_MEDUSA_URL;
+const MEDUSA_KEY = import.meta.env.VITE_MEDUSA_KEY;
 
 const cart = ref(null)
 const cartId = ref(localStorage.getItem("cart_id") || null)
@@ -33,20 +34,26 @@ export function useCart() {
     isLoading.value = true
     
     try {
+      // 3. Créer le panier avec la region_id
       const res = await fetch(`${MEDUSA_URL}/store/carts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "x-publishable-api-key": MEDUSA_KEY,
         },
+        body: JSON.stringify({
+          region_id: "reg_01KB11SJSC9263NBG0853969Z7"
+        })
       })
-
+  
       if (!res.ok) {
+        const errorData = await res.json()
+        console.error("Erreur API:", errorData)
         throw new Error(`Erreur HTTP: ${res.status}`)
       }
-
+  
       const data = await res.json()
-
+  
       if (data.cart) {
         cart.value = data.cart
         cartId.value = data.cart.id

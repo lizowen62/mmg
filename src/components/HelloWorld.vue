@@ -5,7 +5,7 @@
     <div
       class="root-row"
       :style="{
-        padding: $vuetify.display.smAndUp ? '2em 0 2em 0' : '0 0 2em 0',
+        padding: '0 0 2em 0',
         flexWrap: 'wrap'
       }"
     >
@@ -14,7 +14,7 @@
         <div class="center-row">
           <div class="card-wrapper">
             <v-hover>
-              <v-card color="white" elevation="0" border="0" width="90%">
+              <v-card variant="text" width="90%">
                 <v-row class="d-flex flex-row justify-center align-center">
                   <v-card class="presentation-card card-clean"  elevation="0" border="0" color="transparent" width="100%" :style="{ display: 'flex' }">
                     <div
@@ -83,7 +83,7 @@
       style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;" 
       :style="{ width: $vuetify.display.smAndUp ? '90%' : '100%', marginTop: $vuetify.display.smAndUp ? '1.5em' : '0em' , flexDirection: $vuetify.display.smAndUp ? 'row' : 'column' }">
         <div :style="{ padding: $vuetify.display.smAndUp ? '0em' : '1em', width: $vuetify.display.smAndUp ? '40%' : '100%' , marginBottom: $vuetify.display.smAndUp ? '0em' : '3.5em' }">
-          <p class="title" style="width: 100%; margin-bottom: 1em;"> {{ $t('présentation') }}</p>
+          <p class="title" style="width: 100%; margin-bottom: 1em;"> {{ $t('Activités') }}</p>
           <p class="event-title text-center font-weight-bold text-white" style="width: 100%;">
             {{ $t('présentation.présentation') }}
           </p>
@@ -343,7 +343,7 @@ const getCustomEvent = async () => {
 .presentation-title {
   font-size: 2em;
   font-weight: bold;
-  color: white;
+  color: $blue;
   margin-bottom: var(--spacing-sm);
 }
 

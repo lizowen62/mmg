@@ -9,6 +9,11 @@
 //   $color-pack: false
 // );
 
+a.color-link,
+.router-link-active.color-link {
+  color: #ffffff !important;
+}
+
 
 // ----- Couleurs -----
 $primary: #f6fbff;
@@ -16,7 +21,8 @@ $secondary: #cfcfcf;
 $third: #f6fbff;
 $success: #4caf50;
 $card-bg: #97befa;
-$blue: #72abff;
+// $blue: #72abff;
+$blue: #e741a2;
 $yellow: #f7d900;
 $pink: #ff78c7;
 $pink-test: #e9389f;

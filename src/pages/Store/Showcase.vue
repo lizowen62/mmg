@@ -2,13 +2,12 @@
   <v-container>
     <Fragment v-if="products.length > 0">
       <v-sheet
-          class="v-theme--dark"
           width="100%"
           style="padding: 0rem 1rem 0rem 1rem; border-radius: 0.5em;"
           >
             <div style="width: 100%;">
               <v-card
-                class="mx-auto v-theme--dark"
+                class="mx-auto"
                 style="
                   display: flex;
                   flex-direction: row;
@@ -20,8 +19,8 @@
                 elevation="0" 
                 width="100%"
               >
-                <v-icon color="orange" icon="mdi-information"></v-icon>
-                <v-card-text style="color: orange">
+                <v-icon class="color-icon" icon="mdi-information"></v-icon>
+                <v-card-text class="color-text-secondary">
                   {{ t('shop.présentation') }}
                 </v-card-text>
               </v-card>
@@ -34,22 +33,19 @@
               width="100%"
               value="foo"
               border-radius="2em"
-              bg-color="transparent"
-              text-color="orange"
               elevation="0" 
               expand-icon="mdi-plus"
               collapse-icon="mdi-minus"
             >
-              <v-expansion-panel-title style="color: orange; max-width: 100%">
+              <v-expansion-panel-title class="color-text-secondary" max-width="100%">
                 {{ t('shop.filtre') }}
               </v-expansion-panel-title>
-              <v-expansion-panel-text style="color: orange" bg-color="white" color="orange" max-width="100%">
+              <v-expansion-panel-text class="color-icon" max-width="100%">
                 <v-btn
                   v-for="cat in categories"
                   :key="cat"
                   :variant="cat === selectedCategory ? 'flat' : 'outlined'"
-                  color="orange"
-                  class="ma-2"
+                  class="ma-2 color-icon"
                   @click="selectCategory(cat)"
                 >
                   {{ cat }}
@@ -59,7 +55,7 @@
               </v-expansion-panels>
             </div>
       </v-sheet>
-      <v-divider  style="margin-top: 2em; margin-bottom: 2em;" :thickness="2"></v-divider>
+      <v-divider  style="margin-top: 2em; margin-bottom: 2em;" :thickness="4" class="color-icon"></v-divider>
       <v-row>
         <v-col
           v-for="product in filteredProducts"
@@ -100,8 +96,7 @@
   
             <v-card-actions class="d-flex justify-start align-start">
               <v-btn
-                class="d-flex justify-start align-start"
-                color="orange"
+                class="d-flex justify-start align-start color-icon"
                 block
                 @click="add(product.variants[0].id)"
               >
@@ -113,7 +108,7 @@
       </v-row>
       <v-snackbar
         v-model="showSnackbar"
-        color="orange"
+        class="color-text"
         :timeout="1000"
         location="bottom"
         text-color="white"
@@ -121,13 +116,11 @@
         Article ajouté au panier !
       </v-snackbar>
     </Fragment>
-    <Fragment v-else>
-      <v-empty-state
-        headline="Whoops, 404"
-        title="Page not found"
-        text="The page you were looking for does not exist"
-        image="https://vuetifyjs.b-cdn.net/docs/images/logos/v.png"
-      ></v-empty-state> 
+    <Fragment v-else style="display: flex; justify-content: center; align-items: center; margin-top: 4em;">
+      <v-progress-circular
+      class="color-icon"
+      indeterminate
+      ></v-progress-circular>
     </Fragment>
   </v-container>
 </template>
@@ -139,11 +132,11 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const MEDUSA_URL = "http://localhost:9000"
-const MEDUSA_KEY = "pk_44ca2dffa22441117d4799b94ac85a4f7f9f16f8b133b64712813e33bec72a37"
+const MEDUSA_URL = import.meta.env.VITE_MEDUSA_URL;
+const MEDUSA_KEY = import.meta.env.VITE_MEDUSA_KEY;
 
 const products = ref([])
-const regionId = ref("reg_01KAKMN0MTK41X5RZTNBFTP1E0")
+const regionId = ref(import.meta.env.VITE_REGION_ID);
 const { addToCart } = useCart()
 const panel = ref([])
 const showSnackbar = ref(false)

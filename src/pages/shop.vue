@@ -41,8 +41,8 @@
               elevation="0" 
               width="100%"
             >
-              <v-icon color="orange" icon="mdi-information"></v-icon>
-              <v-card-text style="color: orange">
+              <v-icon class="color-icon" icon="mdi-information" style="margin: 0.5em;"></v-icon>
+              <v-card-text class="color-text">
                 {{ t('shop.présentation') }}
               </v-card-text>
             </v-card>
@@ -56,16 +56,14 @@
             width="100%"
             value="foo"
             border-radius="2em"
-            bg-color="transparent"
-            text-color="orange"
             elevation="0" 
             expand-icon="mdi-plus"
             collapse-icon="mdi-minus"
           >
-            <v-expansion-panel-title style="color: orange; max-width: 100%">
+            <v-expansion-panel-title class="color-text" style="max-width: 100%">
               {{ t('shop.filtre') }}
             </v-expansion-panel-title>
-            <v-expansion-panel-text style="color: orange" bg-color="white" color="orange" max-width="100%">
+            <v-expansion-panel-text class="color-text" max-width="100%">
               <v-btn
                 v-for="cat in categories"
                 :key="cat"

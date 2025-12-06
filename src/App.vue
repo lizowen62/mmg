@@ -169,6 +169,13 @@
               <h1 style="font-size: 5vw" class="font-weight-bold text-white">
                 {{ slide.title }}
               </h1>
+              <p 
+                v-if="slide.summary" 
+                style="font-size: 1em; font-weight: bold;"
+                :style="{ textAlign: 'center', width: $vuetify.display.mdAndUp ? '100%' : '70%' , fontSize: $vuetify.display.mdAndUp ? '1.5em' : '1em' }"
+              >
+                {{ slide.summary[0].children[0].text }}
+              </p>
             </div>
           </template>
         </v-img>
@@ -176,10 +183,8 @@
     </v-sheet>
   </v-carousel-item>
     </v-carousel>
-
-      <v-divider :thickness="5" class="color-text"></v-divider>
       
-      <v-main :style="{ '--v-layout-top': '1em' }">
+      <v-main :style="{ '--v-layout-top': '0.5em' }">
         <transition name="fade" mode="out-in">
           <router-view :key="$route.fullPath" />
         </transition>
@@ -231,6 +236,7 @@ const { locale } = useI18n()
 
 interface Slider {
   title: string;
+  summary: string[];
   slide?: {
     slug?: {
       current?: string;
@@ -275,6 +281,7 @@ onMounted(async () => {
 const getArticles = async () => {
   return await sanity.fetch(`*[_type == "customEvent" && isFeatured == true]{
     title,
+    summary,
     slug,
     mainImage {
       asset-> {

@@ -25,12 +25,13 @@
       <p v-if="$vuetify.display.mdAndUp" style="color: white; text-decoration: none">{{ t('réseaux') }} {{ item.subtitle }}</p>
     </a>
 
-    <div v-if="$vuetify.display.smAndUp" class="text-caption text-disabled" style="position: absolute; right: 16px">
+    <div v-if="$vuetify.display.smAndUp" class="text-caption text-disabled" style="position: absolute; right: 16px; color: white !important">
       &copy; 2001-{{ new Date().getFullYear() }}
-      <span class="d-none d-sm-inline-block">{{ t('mmg') }}</span>
+      <span class="d-none d-sm-inline-block" >{{ t('mmg') }}</span>
       —
+      <!-- text-decoration-none -->
       <RouterLink
-        class="text-decoration-none on-surface"
+        class=" on-surface color-link"
         to="/contact"
       >
         {{ t('contact') }}
@@ -75,5 +76,10 @@ const items = [
 .app-footer {
   background-color: $blue !important;
   color: $color-text-secondary !important;
+}
+
+.color-link {
+  font-weight: 500;
+  color: white !important;
 }
 </style>
