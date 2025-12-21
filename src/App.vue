@@ -63,10 +63,10 @@
 
     <!-- App-bar Mobile -->
     <v-app-bar v-else app class="header-app-bar">
-      <div class="header-mobile-caption">
+      <div class="header-mobile-caption color-text">
         <v-btn
           variant="outlined"
-          class="mobile-donation-btn"
+          class="mobile-donation-btn color-text"
           @click="dialog = true"
         >
           {{ $t('donation.donation') }}
@@ -76,7 +76,7 @@
       <v-spacer />
 
       <v-btn icon @click="drawer = !drawer">
-        <v-icon>mdi-menu</v-icon>
+        <v-icon class="color-icon">mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -184,40 +184,13 @@
   </v-carousel-item>
     </v-carousel>
       
-      <v-main :style="{ '--v-layout-top': '0.5em' }">
+      <v-main :style="{ '--v-layout-top': '0.5em' }" :class="{ 'parallax-section': $vuetify.display.mdAndUp }">
+
         <transition name="fade" mode="out-in">
           <router-view :key="$route.fullPath" />
         </transition>
-      </v-main>
 
-      <div class="text-center pa-4 my-4" style="display: flex; justify-content: center; align-items: center;">
-        <v-dialog v-model="dialog" width="auto">
-          <v-card
-            max-width="400"
-            style="display: flex; justify-content: center; align-items: center; padding: 1em"
-            title="Payer avec Stripe"
-          >
-            <template v-slot:actions>
-              <v-btn variant="outlined" @click="dialog = false">{{ $t('donation.donation_monthly') }}</v-btn>
-              <v-btn variant="outlined" @click="dialog = false">{{ $t('donation.donation') }}</v-btn>
-            </template>
-          </v-card>
-        </v-dialog>
-        <!-- <v-dialog v-model="dialog" width="auto">
-          <v-card
-            max-width="400"
-            style="display: flex; justify-content: center; align-items: center;"
-            prepend-icon="mdi-payment"
-            text="Choisissez un moyen de paiement"
-            title=""
-          >
-            <template v-slot:actions>
-              <v-btn variant="outlined" @click="dialog = false">Avec Paypal</v-btn>
-              <v-btn variant="outlined" @click="dialog = false">Avec Stripe la</v-btn>
-            </template>
-          </v-card>
-        </v-dialog> -->
-      </div>
+      </v-main>
 
     <AppFooter />
   </v-app>
@@ -230,6 +203,7 @@ import { provide } from 'vue';
 import eventBus from './eventBus';
 import { useI18n } from 'vue-i18n'
 import { useCart } from './components/UseCart'
+import background from '@/assets/image/color.png'
 
 
 const { locale } = useI18n()
@@ -304,6 +278,19 @@ const getArticles = async () => {
 </style>
 
 <style lang="scss">
+.parallax-section {
+  background-image: url('@/assets/image/rose.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  /* effet parallax léger */
+  background-attachment: fixed;
+
+  /* important */
+  width: 100%;
+}
+
 .app-theme {
   background-color: $color-bg !important;
 }
@@ -351,7 +338,7 @@ const getArticles = async () => {
 .mobile-donation-btn {
   margin-left: 1em;
   color: $color-text-secondary !important;
-  border-color: $color-text-secondary !important;
+  border: 2px solid $blue !important;
 }
 
 .lang-cart-wrapper {

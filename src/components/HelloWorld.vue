@@ -9,7 +9,7 @@
         flexWrap: 'wrap'
       }"
     >
-    <v-divider :thickness="5" class="color-text"></v-divider>
+    <v-divider v-if="!$vuetify.display.mdAndUp" :thickness="5" class="color-text"></v-divider>
       <div class="center-column">
         <div class="center-row">
           <div class="card-wrapper">
